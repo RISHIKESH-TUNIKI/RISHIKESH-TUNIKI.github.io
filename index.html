@@ -235,6 +235,14 @@
   /* placeholders to fill in: easy to spot */
   .todo { outline: 1px dashed rgba(255, 201, 77, .7); outline-offset: 3px; border-radius: 4px; color: #ffc94d !important; }
 
+  /* resume preview: the A4 page (794 x 1123 css px) scaled to fit the box */
+  .resume-box { padding: 26px; display: grid; gap: 22px; justify-items: center; }
+  .resume-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .resume-frame { width: 100%; max-width: 760px; aspect-ratio: 794 / 1123; position: relative; overflow: hidden; border-radius: 12px;
+    box-shadow: 0 0 0 1px var(--line-2), 0 24px 60px -20px rgba(177, 76, 255, .55); background: #fff; }
+  .resume-frame iframe { position: absolute; top: 0; left: 0; width: 794px; height: 1123px; border: 0; transform-origin: 0 0; pointer-events: none; }
+  @media (max-width: 760px) { .resume-box { padding: 16px; } }
+
   /* contact */
   .contact { padding: 60px 48px; text-align: center; position: relative; overflow: hidden; }
   .contact::before { content: ""; position: absolute; width: 500px; height: 500px; border-radius: 50%; left: 50%; top: -260px; transform: translateX(-50%);
@@ -306,6 +314,7 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#journey">Journey</a></li>
+      <li><a href="#resume">Resume</a></li>
       <li><a href="#contact" class="nav-cta">Let's talk</a></li>
     </ul>
     <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -358,7 +367,7 @@
       </div>
       <div class="about-grid">
         <div class="about-text glass reveal">
-          <p>I'm the <strong>Product Lead at AumTech</strong> and a <strong>full-stack .NET and Angular developer</strong>. I started there as an intern in 2024, then led development of a patient management SaaS built on .NET and ABP.IO. These days I also work in <strong>Rust</strong>.</p>
+          <p>I'm the <strong>Product Lead at AumTech</strong> and a <strong>full-stack .NET and Angular developer</strong>. I joined in August 2024 as a data analytics and Python trainee, became a software engineer three months later, an <strong>IT tech lead</strong> in February 2025, and <strong>product lead</strong> in April 2026. Along the way I led the build of a patient management SaaS on .NET and ABP.IO. These days I also work in <strong>Rust</strong>.</p>
           <p>Outside work I build my own apps: a <strong>cross-platform game companion</strong> in .NET 10 Blazor Hybrid, an <strong>Android expense tracker</strong> that reads bank SMS, and a <strong>study planner</strong> in Python that runs my daily learning.</p>
           <p>I'm now on a long-term journey through <strong>AI, Python, data science and .NET</strong>, about two hours a day, with a strong focus on LLMs.</p>
           <p>Off the keyboard I play chess, solve sudoku, meditate and listen to music.</p>
@@ -388,11 +397,11 @@
             <div class="step reveal" style="--accent: var(--magenta)">
               <span class="node"></span>
               <div class="card glass">
-                <div class="when"><span class="todo">[Start month year]</span> – Present</div>
+                <div class="when">Apr 2026 – Present</div>
                 <h3>Product Lead</h3>
                 <div class="org">AumTech</div>
                 <ul class="xp-list">
-                  <li>Lead the product direction of the patient management SaaS</li>
+                  <li>Own the product direction of the patient management SaaS, turning requirements into a roadmap the team delivers</li>
                   <li>Working with Rust alongside the .NET and Angular stack</li>
                 </ul>
                 <div class="stack"><span>Product</span><span>Rust</span><span>.NET</span><span>Angular</span></div>
@@ -401,12 +410,12 @@
             <div class="step reveal" style="--accent: var(--violet)">
               <span class="node"></span>
               <div class="card glass">
-                <div class="when">Feb 2025 – <span class="todo">[End month year]</span></div>
-                <h3>Tech Lead / Lead Developer</h3>
+                <div class="when">Feb 2025 – Mar 2026</div>
+                <h3>IT Tech Lead</h3>
                 <div class="org">AumTech</div>
                 <ul class="xp-list">
                   <li>Led the full-cycle development of a patient management system, a web-based SaaS application</li>
-                  <li>Built its core features and modules with .NET and the ABP.IO framework</li>
+                  <li>Designed and built its core features and modules with .NET and the ABP.IO framework</li>
                 </ul>
                 <div class="stack"><span>C#</span><span>.NET</span><span>ABP.IO</span><span>Angular</span></div>
               </div>
@@ -414,13 +423,25 @@
             <div class="step reveal" style="--accent: var(--cyan)">
               <span class="node"></span>
               <div class="card glass">
-                <div class="when">Aug 2024 – Jan 2025</div>
-                <h3>Software Intern</h3>
+                <div class="when">Nov 2024 – Jan 2025</div>
+                <h3>Software Engineer</h3>
                 <div class="org">AumTech</div>
                 <ul class="xp-list">
                   <li>Built a proof-of-concept patient management app with Altova MobileTogether, working on both web and mobile</li>
                 </ul>
                 <div class="stack"><span>Altova MobileTogether</span><span>Web</span><span>Mobile</span></div>
+              </div>
+            </div>
+            <div class="step reveal" style="--accent: var(--lime)">
+              <span class="node"></span>
+              <div class="card glass">
+                <div class="when">Aug 2024 – Nov 2024</div>
+                <h3>Data Analytics / Python Engineering Trainee</h3>
+                <div class="org">AumTech · joined 7 Aug 2024</div>
+                <ul class="xp-list">
+                  <li>Completed three months of training in data analytics and Python engineering, then moved into the software engineer role</li>
+                </ul>
+                <div class="stack"><span>Python</span><span>Data Analytics</span></div>
               </div>
             </div>
           </div>
@@ -713,6 +734,28 @@
     </div>
   </section>
 
+  <!-- RESUME -->
+  <section id="resume">
+    <div class="wrap">
+      <div class="head reveal">
+        <div class="eyebrow">// resume</div>
+        <h2>My resume</h2>
+        <p class="sub">One page, built from the same source as the PDF. Preview it here or download the PDF.</p>
+      </div>
+      <div class="resume-box glass reveal">
+        <div class="resume-actions">
+          <a href="resume/Tuniki-Rishikesh-Resume.pdf" class="btn btn-primary" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"/></svg>
+            Download PDF</a>
+          <a href="resume/Tuniki-Rishikesh-Resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Open full size</a>
+        </div>
+        <div class="resume-frame" id="resumeFrame">
+          <iframe src="resume/resume.html" title="Resume of Tuniki Rishikesh" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
@@ -803,6 +846,11 @@
     const f = b.dataset.f;
     document.querySelectorAll(".project").forEach(p => p.classList.toggle("hide", f !== "all" && !p.dataset.cat.split(" ").includes(f)));
   });
+
+  // resume preview: scale the A4 page to the frame's width
+  const rFrame = document.getElementById("resumeFrame"), rIframe = rFrame.querySelector("iframe");
+  const fitResume = () => { rIframe.style.transform = `scale(${rFrame.clientWidth / 794})`; };
+  new ResizeObserver(fitResume).observe(rFrame);
 
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>

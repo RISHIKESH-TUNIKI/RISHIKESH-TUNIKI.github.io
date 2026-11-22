@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tuniki Rishikesh · Resume</title>
+<!--
+  Resume source. build-resume.ps1 prints this page to PDF with headless Edge (A4, one page).
+  Style: professional black & white, ATS format: one column only, standard section names, every role written as
+  "Title, Company" with its own dates, no letter-spacing, no header/footer text, no icons. Segoe UI, thin section rules.
+  The phone number is never stored here: build-resume.ps1 -Phone "<number>" puts it in a private copy only.
+-->
+<style>
+  @page { size: A4; margin: 0; }
+  :root { --ink: #111111; --text: #2b2b2b; --muted: #5f5f5f; --rule: #1a1a1a; --soft: #d6d6d6; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #e6e6e6; }
+  body { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: var(--text); font-size: 9.1pt; line-height: 1.29;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  /* min-height, not height: if the content outgrows A4 it spills onto a 2nd page and build-resume.ps1 warns */
+  .page { width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; padding: 10mm 15mm 6mm; display: flex; flex-direction: column; }
+  @media screen { .page { margin: 16px auto; box-shadow: 0 6px 30px rgba(0, 0, 0, .18); } }
+  @media print { html, body { background: #fff; } }
+  .embed, .embed body { background: #fff; }
+  .embed .page { margin: 0; box-shadow: none; }
+  a { color: inherit; text-decoration: none; }
+
+  /* header */
+  header { text-align: center; padding-bottom: 3.2mm; border-bottom: 1.4pt solid var(--rule); }
+  /* No letter-spacing on the name or headings: spaced letters come out as "T UNIKI RI SHIKE SH" when an ATS extracts the PDF text. */
+  h1 { font-size: 23pt; font-weight: 700; text-transform: uppercase; color: var(--ink); line-height: 1.05; }
+  .title { font-size: 10.5pt; font-weight: 600; color: var(--ink); margin-top: 1.6mm; }
+  .contact { margin-top: 1.6mm; font-size: 8.5pt; color: var(--muted); white-space: nowrap; }
+  .contact span + span::before { content: "|"; margin: 0 2mm; color: #9a9a9a; }
+
+  /* sections */
+  section { margin-top: 3.2mm; }
+  h2 { font-size: 10pt; font-weight: 700; text-transform: uppercase; color: var(--ink);
+    padding-bottom: .8mm; border-bottom: .6pt solid var(--soft); margin-bottom: 1.6mm; }
+  p { text-align: justify; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .row b { color: var(--ink); font-weight: 600; font-size: 10pt; }
+  .row .date { font-size: 9pt; color: var(--muted); white-space: nowrap; }
+  .sub { font-style: italic; color: var(--muted); font-size: 9pt; }
+
+  .role { margin-top: 1.6mm; }
+  .role:first-of-type { margin-top: 1mm; }
+  .role .row b { font-size: 9.6pt; }
+  ul { margin: .4mm 0 0 4.2mm; }
+  li { margin-top: .3mm; padding-left: .6mm; }
+  li::marker { color: var(--ink); }
+
+  .skills { display: grid; grid-template-columns: 26mm 1fr; gap: .5mm 3mm; }
+  .skills dt { font-weight: 600; color: var(--ink); }
+  .skills dd { margin: 0; }
+
+  .proj { margin-top: 1.1mm; }
+  .proj:first-of-type { margin-top: 0; }
+  .proj .row b { font-size: 9.5pt; }
+  .proj .stack { font-size: 8.5pt; color: var(--muted); white-space: nowrap; }
+  .proj p { text-align: left; }
+
+  .edu { margin-top: .9mm; }
+  .edu:first-of-type { margin-top: 0; }
+  .edu .row b { font-size: 9.5pt; font-weight: 600; }
+  .edu .row b span { font-weight: 400; color: var(--muted); font-style: italic; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+
+  footer { margin-top: auto; padding-top: 2mm; text-align: center; font-size: 7.6pt; color: #8a8a8a; }
+</style>
+<script>if (window.self !== window.top) document.documentElement.classList.add('embed');</script>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Tuniki Rishikesh</h1>
+    <div class="title">Product Lead &nbsp;·&nbsp; Full-Stack .NET &amp; Angular Developer</div>
+    <div class="contact">
+      <span>tuniki.rishikesh@gmail.com</span>
+      <!--PHONE-->
+      <span>linkedin.com/in/rishikeshtuniki</span>
+      <span>github.com/RISHIKESH-TUNIKI</span>
+      <span>rishikesh-tuniki.github.io/portfolio</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Professional Summary</h2>
+    <p>Product Lead at AumTech with over two years at the company and three promotions in under two years, from data analytics and Python
+      trainee to software engineer, IT tech lead and product lead. Led the end-to-end development of a <strong>patient management SaaS</strong>
+      on <strong>.NET, ABP.IO and Angular</strong> and now owns its product direction while working with <strong>Rust</strong>. Builds
+      independent applications for web, desktop and Android, and is deepening skills in AI, Python and data science.</p>
+  </section>
+
+  <section>
+    <h2>Professional Experience</h2>
+
+    <div class="role">
+      <div class="row"><b>Product Lead, AumTech</b><span class="date">Apr 2026 – Present</span></div>
+      <ul>
+        <li>Own the product direction of the patient management SaaS, turning requirements into the team's roadmap.</li>
+        <li>Work with Rust alongside the existing .NET and Angular stack.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="row"><b>IT Tech Lead, AumTech</b><span class="date">Feb 2025 – Mar 2026</span></div>
+      <ul>
+        <li>Led the full development lifecycle of a web-based patient management SaaS, from design through delivery.</li>
+        <li>Designed and implemented its core features and modules using .NET and the ABP.IO framework.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="row"><b>Software Engineer, AumTech</b><span class="date">Nov 2024 – Jan 2025</span></div>
+      <ul>
+        <li>Built a proof-of-concept patient management app in Altova MobileTogether for web and mobile.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="row"><b>Data Analytics / Python Engineering Trainee, AumTech</b><span class="date">Aug 2024 – Nov 2024</span></div>
+      <ul>
+        <li>Completed a three-month training programme in data analytics and Python engineering.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Technical Skills</h2>
+    <dl class="skills">
+      <dt>Backend</dt><dd>C#, .NET, ASP.NET Core, ABP.IO, Entity Framework, REST APIs</dd>
+      <dt>Frontend</dt><dd>Angular, TypeScript, Blazor, React, HTML, CSS</dd>
+      <dt>Languages</dt><dd>C#, Rust, Python, Java, C, SQL</dd>
+      <dt>Databases</dt><dd>PostgreSQL, SQL Server, MySQL, MongoDB</dd>
+      <dt>Mobile</dt><dd>Android, .NET MAUI, Altova MobileTogether</dd>
+      <dt>Tools</dt><dd>Git, GitHub, Docker, Visual Studio, VS Code</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="proj"><div class="row"><b>Game Tracker</b><span class="stack">.NET 10, Blazor Hybrid, WPF, MAUI</span></div>
+      <p>Companion app for three games on Windows and Android: account sync, farming planner and interactive map.</p></div>
+    <div class="proj"><div class="row"><b>SpendTracky</b><span class="stack">Android, Room, Firebase</span></div>
+      <p>Expense tracker that records transactions automatically from bank SMS and UPI notifications.</p></div>
+    <div class="proj"><div class="row"><b>Learning Tracker</b><span class="stack">Python, PostgreSQL</span></div>
+      <p>Study planner running a rotating two-hour daily schedule across five subjects, with timers, notes and PDF exports.</p></div>
+    <div class="proj"><div class="row"><b>ABP + Angular on Docker</b><span class="stack">ABP, Angular, SQL Server, Docker</span></div>
+      <p>Modular full-stack reference app with API, migrator, SQL Server and nginx in one Docker Compose stack.</p></div>
+    <div class="proj"><div class="row"><b>Portfolio and Resume Builder</b><span class="stack">HTML, CSS, PowerShell, GitHub Pages</span></div>
+      <p>Responsive portfolio site; this resume is generated to PDF from the same source.</p></div>
+    <div class="proj"><div class="row"><b>ATM Simulator (academic)</b><span class="stack">Java, Swing, JDBC, MySQL</span></div>
+      <p>Desktop ATM with withdrawals, deposits, balance checks and e-statements.</p></div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="edu"><div class="row"><b>B.Tech, Computer Science and Engineering <span>· CMR Institute of Technology, Hyderabad · CGPA 7.78 (72.8%)</span></b><span class="date">2020 – 2024</span></div></div>
+    <div class="edu"><div class="row"><b>Intermediate (MPC) <span>· Sri Chaitanya, Chintal · 81.3%</span></b><span class="date">2018 – 2020</span></div></div>
+    <div class="edu"><div class="row"><b>Secondary School Certificate <span>· Akshara Techno School, Chintal · CGPA 8.8</span></b><span class="date">2018</span></div></div>
+  </section>
+
+  <section>
+    <h2>Certifications</h2>
+    <ul>
+      <li>Infosys Springboard: Web Development, Responsive Web Design, Java Programming; Cisco: Python Essentials 1 and 2, Introduction to Cybersecurity</li>
+      <li>Google (Coursera): Digital Marketing and E-commerce</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Achievements</h2>
+    <ul>
+      <li>Promoted three times within two years at AumTech, from trainee to Product Lead; participant, Smart India Hackathon 2022.</li>
+    </ul>
+  </section>
+</div>
+</body>
+</html>
