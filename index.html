@@ -183,6 +183,30 @@
     background: radial-gradient(circle at 25% 30%, var(--accent), transparent 55%), radial-gradient(circle at 85% 90%, var(--accent-2), transparent 50%), #0b0614; }
   .project .art::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 26px 26px; }
   .project .art .glyph { position: absolute; right: 24px; bottom: 16px; font-size: 3.6rem; filter: drop-shadow(0 0 18px var(--accent)); }
+  .project .art .ai-badge { position: absolute; right: 18px; top: 18px; font-size: .74rem; font-weight: 600; padding: 5px 11px; border-radius: 999px; color: #fff;
+    background: linear-gradient(135deg, rgba(217,119,87,.92), rgba(177,76,255,.85)); border: 1px solid rgba(255,255,255,.25); box-shadow: 0 0 16px rgba(217,119,87,.45); }
+
+  /* AI-assisted development */
+  .ai-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 22px; align-items: stretch; }
+  .ai-main { padding: 32px; position: relative; overflow: hidden; }
+  .ai-main::after { content: ""; position: absolute; top: 0; left: 24px; right: 24px; height: 2px; background: linear-gradient(90deg, #d97757, var(--violet)); box-shadow: 0 0 18px #d97757; }
+  .ai-main .lvl, .ai-tool .lvl { font-family: var(--mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
+  .ai-main .lvl { color: #f0a284; }
+  .ai-main h3 { font-size: 1.6rem; letter-spacing: -.02em; margin: 6px 0 10px; }
+  .ai-main p { color: var(--ink-2); margin-bottom: 18px; }
+  .ai-uses { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; }
+  .ai-uses li { color: var(--ink-2); font-size: .94rem; padding-left: 22px; position: relative; }
+  .ai-uses li::before { content: "\2726"; position: absolute; left: 0; color: #f0a284; }
+  .ai-side { display: grid; gap: 22px; }
+  .ai-tool { padding: 24px 26px; border-left: 3px solid var(--accent); }
+  .ai-tool .lvl { color: var(--accent); }
+  .ai-tool h3 { font-size: 1.2rem; margin: 4px 0 6px; }
+  .ai-tool p { color: var(--ink-2); font-size: .95rem; }
+  .ai-note { margin-top: 22px; padding: 18px 24px; color: var(--ink-2); font-size: .95rem; }
+  .ai-note strong { color: var(--ink); }
+  @media (max-width: 980px) { .ai-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 760px) { .ai-main { padding: 24px; } .ai-uses { grid-template-columns: 1fr; } }
+
   .project .art .tag { position: absolute; left: 20px; top: 18px; font-family: var(--mono); font-size: .75rem; padding: 5px 11px; border-radius: 8px; background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.15); backdrop-filter: blur(8px); }
   .project .body { padding: 26px 28px 28px; display: flex; flex-direction: column; flex: 1; }
   .project h3 { font-size: 1.35rem; letter-spacing: -.02em; margin-bottom: 8px; }
@@ -312,6 +336,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#ai">AI</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#journey">Journey</a></li>
       <li><a href="#resume">Resume</a></li>
@@ -345,6 +370,7 @@
   <span class="p">Role</span>  = <span class="s">"Product Lead @ AumTech"</span>,
   <span class="p">Stack</span> = [<span class="s">"C#"</span>, <span class="s">"ABP.IO"</span>, <span class="s">"Angular"</span>,
            <span class="s">"Rust"</span>, <span class="s">"PostgreSQL"</span>],
+  <span class="p">AI</span>    = [<span class="s">"Claude"</span>, <span class="s">"Gemini"</span>, <span class="s">"ChatGPT"</span>],
   <span class="p">Now</span>   = <span class="s">"Learning AI &amp; LLMs"</span>
 };
 <span class="c">// coffee.Refill(); ship();</span></pre>
@@ -543,13 +569,49 @@
     </div>
   </section>
 
+  <!-- AI-ASSISTED DEVELOPMENT -->
+  <section id="ai">
+    <div class="wrap">
+      <div class="head reveal">
+        <div class="eyebrow">// ai-assisted development</div>
+        <h2>I build with AI tools</h2>
+        <p class="sub">AI assistants are part of how I design, write and review software every day, with me owning the decisions and the final code.</p>
+      </div>
+      <div class="ai-grid">
+        <div class="ai-main glass reveal">
+          <div class="lvl">Primary tool</div>
+          <h3>Claude</h3>
+          <p>My main AI pair programmer, including Claude Code in the terminal and editor. My personal projects on this page were built with Claude, from the first plan to the shipped release.</p>
+          <ul class="ai-uses">
+            <li>Planning features and architecture</li>
+            <li>Writing and refactoring code</li>
+            <li>Debugging and reviewing changes</li>
+            <li>Tests, docs and release notes</li>
+          </ul>
+        </div>
+        <div class="ai-side">
+          <div class="ai-tool glass reveal" style="--accent: #4f8dff">
+            <div class="lvl">Familiar</div>
+            <h3>Gemini</h3>
+            <p>Research, quick explanations and a second opinion on approaches.</p>
+          </div>
+          <div class="ai-tool glass reveal" style="--accent: #19c37d">
+            <div class="lvl">Familiar</div>
+            <h3>ChatGPT</h3>
+            <p>Brainstorming, drafting and comparing answers across models.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PROJECTS -->
   <section id="projects">
     <div class="wrap">
       <div class="head reveal">
         <div class="eyebrow">// projects</div>
         <h2>Things I've built</h2>
-        <p class="sub">Real apps I designed, built and use myself.</p>
+        <p class="sub">Real apps I designed, built and use myself. Personal projects marked <span style="color:#f0a284;font-weight:600">&#10022; Built with Claude</span> were developed with Claude as my AI pair programmer.</p>
       </div>
       <div class="filters reveal" id="filters">
         <button class="filter on" data-f="all">All</button>
@@ -561,7 +623,7 @@
       <div class="projects" id="projectList">
 
         <article class="project glass reveal" data-cat="dotnet mobile" style="--accent: var(--magenta); --accent-2: var(--purple)">
-          <div class="art"><span class="tag">Windows · Android</span><span class="glyph">🎮</span></div>
+          <div class="art"><span class="tag">Windows · Android</span><span class="ai-badge" title="Built with Claude as my AI pair programmer">&#10022; Built with Claude</span><span class="glyph">🎮</span></div>
           <div class="body">
             <h3>Game Tracker</h3>
             <p>One companion app for three games, with a logo switch between them. It syncs your account and plans what to farm next.</p>
@@ -575,7 +637,7 @@
         </article>
 
         <article class="project glass reveal" data-cat="mobile" style="--accent: var(--cyan); --accent-2: var(--purple)">
-          <div class="art"><span class="tag">Android · v1.10</span><span class="glyph">💸</span></div>
+          <div class="art"><span class="tag">Android · v1.10</span><span class="ai-badge" title="Built with Claude as my AI pair programmer">&#10022; Built with Claude</span><span class="glyph">💸</span></div>
           <div class="body">
             <h3>SpendTracky</h3>
             <p>An expense tracker that fills itself in. It reads bank SMS and UPI notifications so you only add notes.</p>
@@ -589,7 +651,7 @@
         </article>
 
         <article class="project glass reveal" data-cat="python" style="--accent: var(--lime); --accent-2: var(--cyan)">
-          <div class="art"><span class="tag">Web app · localhost</span><span class="glyph">📚</span></div>
+          <div class="art"><span class="tag">Web app · localhost</span><span class="ai-badge" title="Built with Claude as my AI pair programmer">&#10022; Built with Claude</span><span class="glyph">📚</span></div>
           <div class="body">
             <h3>Learning Tracker</h3>
             <p>A study planner that runs a two-hour daily schedule across five subjects, rotating them so nothing falls behind.</p>
@@ -603,7 +665,7 @@
         </article>
 
         <article class="project glass reveal" data-cat="dotnet" style="--accent: var(--violet); --accent-2: #e0389b">
-          <div class="art"><span class="tag">Web · Docker</span><span class="glyph">🐳</span></div>
+          <div class="art"><span class="tag">Web · Docker</span><span class="ai-badge" title="Built with Claude as my AI pair programmer">&#10022; Built with Claude</span><span class="glyph">🐳</span></div>
           <div class="body">
             <h3>ABP + Angular on Docker</h3>
             <p>A full-stack demo on the ABP framework with .NET 10 and the latest Angular, packaged to run with Docker Compose.</p>
@@ -617,7 +679,7 @@
         </article>
 
         <article class="project glass reveal" data-cat="python" style="--accent: #ff8a3d; --accent-2: var(--magenta)">
-          <div class="art"><span class="tag">Generator · PDF</span><span class="glyph">🧭</span></div>
+          <div class="art"><span class="tag">Generator · PDF</span><span class="ai-badge" title="Built with Claude as my AI pair programmer">&#10022; Built with Claude</span><span class="glyph">🧭</span></div>
           <div class="body">
             <h3>AI Mastery Roadmap</h3>
             <p>A 492-lesson path from Python basics to LLMs, generated from one data file into a website and a printable PDF.</p>
@@ -631,7 +693,7 @@
         </article>
 
         <article class="project glass reveal" data-cat="dotnet" style="--accent: #7c8cff; --accent-2: var(--cyan)">
-          <div class="art"><span class="tag">58 templates</span><span class="glyph">🗂️</span></div>
+          <div class="art"><span class="tag">58 templates</span><span class="ai-badge" title="Built with Claude as my AI pair programmer">&#10022; Built with Claude</span><span class="glyph">🗂️</span></div>
           <div class="body">
             <h3>Project Tracking Template</h3>
             <p>A delivery framework with phases D0 to D9 and a builder that creates every Excel and Word template from code.</p>

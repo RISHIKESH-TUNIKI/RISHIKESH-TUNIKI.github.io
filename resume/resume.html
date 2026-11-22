@@ -61,6 +61,7 @@
   .proj .row b { font-size: 9.5pt; }
   .proj .stack { font-size: 8.5pt; color: var(--muted); white-space: nowrap; }
   .proj p { text-align: left; }
+  p.note { font-style: italic; color: var(--muted); font-size: 8.8pt; margin: -.4mm 0 1.2mm; }
 
   .edu { margin-top: .9mm; }
   .edu:first-of-type { margin-top: 0; }
@@ -136,12 +137,14 @@
       <dt>Languages</dt><dd>C#, Rust, Python, Java, C, SQL</dd>
       <dt>Databases</dt><dd>PostgreSQL, SQL Server, MySQL, MongoDB</dd>
       <dt>Mobile</dt><dd>Android, .NET MAUI, Altova MobileTogether</dd>
+      <dt>AI Tools</dt><dd>Claude, Claude Code (primary); Gemini, ChatGPT</dd>
       <dt>Tools</dt><dd>Git, GitHub, Docker, Visual Studio, VS Code</dd>
     </dl>
   </section>
 
   <section>
     <h2>Projects</h2>
+    <p class="note">Personal projects were built with Claude as an AI pair programmer; the ATM Simulator is an academic project.</p>
     <div class="proj"><div class="row"><b>Game Tracker</b><span class="stack">.NET 10, Blazor Hybrid, WPF, MAUI</span></div>
       <p>Companion app for three games on Windows and Android: account sync, farming planner and interactive map.</p></div>
     <div class="proj"><div class="row"><b>SpendTracky</b><span class="stack">Android, Room, Firebase</span></div>
@@ -150,8 +153,6 @@
       <p>Study planner running a rotating two-hour daily schedule across five subjects, with timers, notes and PDF exports.</p></div>
     <div class="proj"><div class="row"><b>ABP + Angular on Docker</b><span class="stack">ABP, Angular, SQL Server, Docker</span></div>
       <p>Modular full-stack reference app with API, migrator, SQL Server and nginx in one Docker Compose stack.</p></div>
-    <div class="proj"><div class="row"><b>Portfolio and Resume Builder</b><span class="stack">HTML, CSS, PowerShell, GitHub Pages</span></div>
-      <p>Responsive portfolio site; this resume is generated to PDF from the same source.</p></div>
     <div class="proj"><div class="row"><b>ATM Simulator (academic)</b><span class="stack">Java, Swing, JDBC, MySQL</span></div>
       <p>Desktop ATM with withdrawals, deposits, balance checks and e-statements.</p></div>
   </section>
