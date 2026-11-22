@@ -11,7 +11,7 @@
   The phone number is never stored here: build-resume.ps1 -Phone "<number>" puts it in a private copy only.
 -->
 <style>
-  @page { size: A4; margin: 0; }
+  @page { size: A4; }
   :root { --ink: #111111; --text: #2b2b2b; --muted: #5f5f5f; --rule: #1a1a1a; --soft: #d6d6d6; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: #e6e6e6; }
@@ -20,7 +20,14 @@
   /* min-height, not height: if the content outgrows A4 it spills onto a 2nd page and build-resume.ps1 warns */
   .page { width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; padding: 10mm 15mm 6mm; display: flex; flex-direction: column; }
   @media screen { .page { margin: 16px auto; box-shadow: 0 6px 30px rgba(0, 0, 0, .18); } }
-  @media print { html, body { background: #fff; } }
+  /* Printing: margins come from @page so every page (not just the first) gets them; keep entries whole across a page break. */
+  @page { margin: 10mm 15mm 9mm; }
+  @media print {
+    html, body { background: #fff; }
+    .page { width: auto; min-height: 0; padding: 0; margin: 0; box-shadow: none; display: block; }
+  }
+  .role, .proj, .edu, section > ul li { break-inside: avoid; }
+  h2 { break-after: avoid; }
   .embed, .embed body { background: #fff; }
   .embed .page { margin: 0; box-shadow: none; }
   a { color: inherit; text-decoration: none; }
@@ -71,7 +78,17 @@
 
   footer { margin-top: auto; padding-top: 2mm; text-align: center; font-size: 7.6pt; color: #8a8a8a; }
 </style>
-<script>if (window.self !== window.top) document.documentElement.classList.add('embed');</script>
+<script>
+  // Inside the portfolio's preview frame: drop the page margin and tell the portfolio how tall the resume is,
+  // so the preview shows every page, not just the first.
+  if (window.self !== window.top) {
+    document.documentElement.classList.add('embed');
+    const report = () => parent.postMessage({ resumeHeight: document.documentElement.scrollHeight }, '*');
+    window.addEventListener('load', report);
+    window.addEventListener('resize', report);
+    window.addEventListener('message', e => { if (e.data && e.data.resumeHeightRequest) report(); });
+  }
+</script>
 </head>
 <body>
 <div class="page">
@@ -89,10 +106,11 @@
 
   <section>
     <h2>Professional Summary</h2>
-    <p>Product Lead at AumTech with over two years at the company and three promotions in under two years, from data analytics and Python
-      trainee to software engineer, IT tech lead and product lead. Led the end-to-end development of a <strong>patient management SaaS</strong>
-      on <strong>.NET, ABP.IO and Angular</strong> and now owns its product direction while working with <strong>Rust</strong>. Builds
-      independent applications for web, desktop and Android, and is deepening skills in AI, Python and data science.</p>
+    <p>Product Lead at AumTech, promoted three times in under two years from trainee to software engineer, IT tech lead and product lead.
+      Led a <strong>patient notification platform</strong> from proof of concept to production SaaS on <strong>.NET, ABP.IO and Angular</strong>,
+      integrated with <strong>Open Dental</strong> and <strong>Sidexis</strong>. Now leading a new <strong>e-commerce platform for India</strong> in
+      proof of concept, built with <strong>Rust (Axum) and HTMX</strong> and integrating <strong>Zoho</strong>, <strong>Pabbly Connect</strong>, the <strong>Anthropic API</strong> and <strong>AtroCore</strong> (PIM).
+      Builds independent apps for web, desktop and Android with AI-assisted development.</p>
   </section>
 
   <section>
@@ -101,30 +119,38 @@
     <div class="role">
       <div class="row"><b>Product Lead, AumTech</b><span class="date">Apr 2026 – Present</span></div>
       <ul>
-        <li>Own the product direction of the patient management SaaS, turning requirements into the team's roadmap.</li>
-        <li>Work with Rust alongside the existing .NET and Angular stack.</li>
+        <li><strong>E-commerce platform for India (proof of concept, since Nov 2026):</strong> leading a new mobile-first web storefront built with Rust (Axum) and HTMX, integrating Zoho, Pabbly Connect, the Anthropic API and AtroCore for product information management.</li>
+        <li><strong>Patient notification platform (to Oct 2026):</strong> managed its full product development across features, integrations and the milestones planned from requirements, until the product moved to another team.</li>
+        <li>Coordinated onsite and overseas team members and clients, drafted delivery schedules and oversaw integrations with other applications.</li>
+        <li>Managed the developers and testers and reported project status to stakeholders.</li>
       </ul>
     </div>
 
     <div class="role">
       <div class="row"><b>IT Tech Lead, AumTech</b><span class="date">Feb 2025 – Mar 2026</span></div>
       <ul>
-        <li>Led the full development lifecycle of a web-based patient management SaaS, from design through delivery.</li>
-        <li>Designed and implemented its core features and modules using .NET and the ABP.IO framework.</li>
+        <li>Led the patient notification platform from proof of concept to a full production SaaS built with ABP.IO (.NET) and Angular.</li>
+        <li>Built a .NET Windows Service that integrates fully with Open Dental to retrieve patient information and pulls images from Sidexis.</li>
+        <li>Gathered requirements directly from clients and shaped them into features, adding technical input where it was needed.</li>
+        <li>Made the complex architectural decisions for the platform.</li>
+        <li>Split the project work across the team, assigning tasks and setting schedules for each developer.</li>
       </ul>
     </div>
 
     <div class="role">
       <div class="row"><b>Software Engineer, AumTech</b><span class="date">Nov 2024 – Jan 2025</span></div>
       <ul>
-        <li>Built a proof-of-concept patient management app in Altova MobileTogether for web and mobile.</li>
+        <li>Completed the patient notification proof of concept with .NET integration and Python scripts linking Open Dental and Sidexis.</li>
+        <li>Built it as a web application in Altova MobileTogether, hosted on MobileTogether Server, with jobs on Altova FlowForce Server.</li>
+        <li>Its successful delivery led to joining development of the company's production product.</li>
       </ul>
     </div>
 
     <div class="role">
       <div class="row"><b>Data Analytics / Python Engineering Trainee, AumTech</b><span class="date">Aug 2024 – Nov 2024</span></div>
       <ul>
-        <li>Completed a three-month training programme in data analytics and Python engineering.</li>
+        <li>Developed and maintained Python scripts that import data into the application database.</li>
+        <li>Started a patient notification proof of concept integrating Open Dental (PMS) with Sidexis (imaging).</li>
       </ul>
     </div>
   </section>
@@ -132,11 +158,12 @@
   <section>
     <h2>Technical Skills</h2>
     <dl class="skills">
-      <dt>Backend</dt><dd>C#, .NET, ASP.NET Core, ABP.IO, Entity Framework, REST APIs</dd>
-      <dt>Frontend</dt><dd>Angular, TypeScript, Blazor, React, HTML, CSS</dd>
+      <dt>Backend</dt><dd>C#, .NET, ASP.NET Core, ABP.IO, Entity Framework, REST APIs, Windows Services; Rust, Axum</dd>
+      <dt>Frontend</dt><dd>Angular, TypeScript, HTMX, Blazor, React, HTML, CSS; Android, .NET MAUI</dd>
       <dt>Languages</dt><dd>C#, Rust, Python, Java, C, SQL</dd>
       <dt>Databases</dt><dd>PostgreSQL, SQL Server, MySQL, MongoDB</dd>
-      <dt>Mobile</dt><dd>Android, .NET MAUI, Altova MobileTogether</dd>
+      <dt>Altova</dt><dd>MobileTogether, MobileTogether Server, FlowForce Server</dd>
+      <dt>Integrations</dt><dd>Open Dental (PMS), Sidexis (imaging), Zoho, Pabbly Connect, Anthropic API, AtroCore (PIM)</dd>
       <dt>AI Tools</dt><dd>Claude, Claude Code (primary); Gemini, ChatGPT</dd>
       <dt>Tools</dt><dd>Git, GitHub, Docker, Visual Studio, VS Code</dd>
     </dl>
@@ -144,7 +171,7 @@
 
   <section>
     <h2>Projects</h2>
-    <p class="note">Personal projects were built with Claude as an AI pair programmer; the ATM Simulator is an academic project.</p>
+    <p class="note">Personal projects, built with Claude as an AI pair programmer.</p>
     <div class="proj"><div class="row"><b>Game Tracker</b><span class="stack">.NET 10, Blazor Hybrid, WPF, MAUI</span></div>
       <p>Companion app for three games on Windows and Android: account sync, farming planner and interactive map.</p></div>
     <div class="proj"><div class="row"><b>SpendTracky</b><span class="stack">Android, Room, Firebase</span></div>
@@ -153,22 +180,17 @@
       <p>Study planner running a rotating two-hour daily schedule across five subjects, with timers, notes and PDF exports.</p></div>
     <div class="proj"><div class="row"><b>ABP + Angular on Docker</b><span class="stack">ABP, Angular, SQL Server, Docker</span></div>
       <p>Modular full-stack reference app with API, migrator, SQL Server and nginx in one Docker Compose stack.</p></div>
-    <div class="proj"><div class="row"><b>ATM Simulator (academic)</b><span class="stack">Java, Swing, JDBC, MySQL</span></div>
-      <p>Desktop ATM with withdrawals, deposits, balance checks and e-statements.</p></div>
   </section>
 
   <section>
     <h2>Education</h2>
     <div class="edu"><div class="row"><b>B.Tech, Computer Science and Engineering <span>· CMR Institute of Technology, Hyderabad · CGPA 7.78 (72.8%)</span></b><span class="date">2020 – 2024</span></div></div>
-    <div class="edu"><div class="row"><b>Intermediate (MPC) <span>· Sri Chaitanya, Chintal · 81.3%</span></b><span class="date">2018 – 2020</span></div></div>
-    <div class="edu"><div class="row"><b>Secondary School Certificate <span>· Akshara Techno School, Chintal · CGPA 8.8</span></b><span class="date">2018</span></div></div>
-  </section>
+    <div class="edu"><div class="row"><b>Intermediate (MPC) <span>· Sri Chaitanya, Chintal · 81.3%</span></b><span class="date">2018 – 2020</span></div></div>  </section>
 
   <section>
     <h2>Certifications</h2>
     <ul>
-      <li>Infosys Springboard: Web Development, Responsive Web Design, Java Programming; Cisco: Python Essentials 1 and 2, Introduction to Cybersecurity</li>
-      <li>Google (Coursera): Digital Marketing and E-commerce</li>
+      <li>Infosys: Web Development, Responsive Design, Java · Cisco: Python Essentials 1 and 2, Cybersecurity · Google: Digital Marketing</li>
     </ul>
   </section>
 

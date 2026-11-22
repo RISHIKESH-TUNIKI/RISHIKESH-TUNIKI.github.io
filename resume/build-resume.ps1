@@ -39,7 +39,7 @@ try {
     if (-not (Test-Path $out)) { throw 'Edge did not produce the PDF.' }
     $pages = ([regex]::Matches([IO.File]::ReadAllText($out, [Text.Encoding]::GetEncoding(28591)), '/Type\s*/Page[^s]')).Count
     "Built $out ($([math]::Round((Get-Item $out).Length / 1KB)) KB, $pages page(s))"
-    if ($pages -ne 1) { Write-Warning 'The resume is meant to fit on one page; shorten something in resume.html.' }
+    if ($pages -gt 2) { Write-Warning 'The resume is meant to fit on at most two pages; shorten something in resume.html.' }
 } finally {
     Remove-Item $tmp -Force -ErrorAction SilentlyContinue
     Remove-Item $profile -Recurse -Force -ErrorAction SilentlyContinue
